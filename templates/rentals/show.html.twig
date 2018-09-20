@@ -1,0 +1,50 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Rentals{% endblock %}
+
+{% block body %}
+    <h1>Rentals</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ rental.id }}</td>
+            </tr>
+            <tr>
+                <th>User_id</th>
+                <td>{{ rental.userId }}</td>
+            </tr>
+            <tr>
+                <th>Car_id</th>
+                <td>{{ rental.carId }}</td>
+            </tr>
+            <tr>
+                <th>Rent_date</th>
+                <td>{{ rental.rentDate ? rental.rentDate|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Planned_return_date</th>
+                <td>{{ rental.plannedReturnDate ? rental.plannedReturnDate|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Return_date</th>
+                <td>{{ rental.returnDate ? rental.returnDate|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Date_created</th>
+                <td>{{ rental.dateCreated ? rental.dateCreated|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Date_updated</th>
+                <td>{{ rental.dateUpdated ? rental.dateUpdated|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('rentals_index') }}">back to list</a>
+
+    <a href="{{ path('rentals_edit', {'id': rental.id}) }}">edit</a>
+
+    {{ include('rentals/_delete_form.html.twig') }}
+{% endblock %}

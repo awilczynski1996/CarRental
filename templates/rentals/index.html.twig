@@ -1,0 +1,47 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Rentals index{% endblock %}
+
+{% block body %}
+    <h1>Rentals index</h1>
+
+    <table class="table">
+        <thead>
+        <tr>
+            <th>Id</th>
+            <th>User_id</th>
+            <th>Car_id</th>
+            <th>Rent_date</th>
+            <th>Planned_return_date</th>
+            <th>Return_date</th>
+            <th>Date_created</th>
+            <th>Date_updated</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        {% for rental in rentals %}
+            <tr>
+                <td>{{ rental.id }}</td>
+                <td>{{ rental.userId }}</td>
+                <td>{{ rental.carId }}</td>
+                <td>{{ rental.rentDate ? rental.rentDate|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ rental.plannedReturnDate ? rental.plannedReturnDate|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ rental.returnDate ? rental.returnDate|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ rental.dateCreated ? rental.dateCreated|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ rental.dateUpdated ? rental.dateUpdated|date('Y-m-d H:i:s') : '' }}</td>
+                <td>
+                    <a href="{{ path('rentals_show', {'id': rental.id}) }}">show</a>
+                    <a href="{{ path('rentals_edit', {'id': rental.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="9">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('rentals_new') }}">Create new</a>
+{% endblock %}

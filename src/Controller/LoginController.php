@@ -8,7 +8,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use App\Entity\Users;
 
-class Login extends Controller
+class LoginController extends Controller
 {
     /**
      * @Route("/")
@@ -17,7 +17,7 @@ class Login extends Controller
     public function index()
     {
 //        return new Response('<html><body>Test</body></html>');
-        return $this->render('view/login.html.twig');
+        return $this->render('login.html.twig');
     }
 
 //    /**
